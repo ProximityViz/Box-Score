@@ -14,23 +14,37 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EC89025B1AD8B58E00B2127E"
-               BuildableName = "Box Score.app"
-               BlueprintName = "Box Score"
+               BlueprintIdentifier = "EC89028E1AD8B6F500B2127E"
+               BuildableName = "Box Score WatchKit App.app"
+               BlueprintName = "Box Score WatchKit App"
                ReferencedContainer = "container:Box Score.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EC8902701AD8B58E00B2127E"
-               BuildableName = "Box ScoreTests.xctest"
-               BlueprintName = "Box ScoreTests"
+               BlueprintIdentifier = "EC8902841AD8B6F500B2127E"
+               BuildableName = "Box Score WatchKit Extension.appex"
+               BlueprintName = "Box Score WatchKit Extension"
+               ReferencedContainer = "container:Box Score.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EC89025B1AD8B58E00B2127E"
+               BuildableName = "Box Score.app"
+               BlueprintName = "Box Score"
                ReferencedContainer = "container:Box Score.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,23 +56,13 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EC8902701AD8B58E00B2127E"
-               BuildableName = "Box ScoreTests.xctest"
-               BlueprintName = "Box ScoreTests"
-               ReferencedContainer = "container:Box Score.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EC89025B1AD8B58E00B2127E"
-            BuildableName = "Box Score.app"
-            BlueprintName = "Box Score"
+            BlueprintIdentifier = "EC89028E1AD8B6F500B2127E"
+            BuildableName = "Box Score WatchKit App.app"
+            BlueprintName = "Box Score WatchKit App"
             ReferencedContainer = "container:Box Score.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -72,16 +76,27 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard"
+         RemotePath = "/Box Score">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EC89025B1AD8B58E00B2127E"
-            BuildableName = "Box Score.app"
-            BlueprintName = "Box Score"
+            BlueprintIdentifier = "EC89028E1AD8B6F500B2127E"
+            BuildableName = "Box Score WatchKit App.app"
+            BlueprintName = "Box Score WatchKit App"
             ReferencedContainer = "container:Box Score.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "EC89028E1AD8B6F500B2127E"
+            BuildableName = "Box Score WatchKit App.app"
+            BlueprintName = "Box Score WatchKit App"
+            ReferencedContainer = "container:Box Score.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -91,16 +106,27 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.springboard"
+         RemotePath = "/Box Score">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EC89025B1AD8B58E00B2127E"
-            BuildableName = "Box Score.app"
-            BlueprintName = "Box Score"
+            BlueprintIdentifier = "EC89028E1AD8B6F500B2127E"
+            BuildableName = "Box Score WatchKit App.app"
+            BlueprintName = "Box Score WatchKit App"
             ReferencedContainer = "container:Box Score.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "EC89028E1AD8B6F500B2127E"
+            BuildableName = "Box Score WatchKit App.app"
+            BlueprintName = "Box Score WatchKit App"
+            ReferencedContainer = "container:Box Score.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -8,11 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		EC8902621AD8B58E00B2127E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902611AD8B58E00B2127E /* AppDelegate.swift */; };
-		EC8902641AD8B58E00B2127E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902631AD8B58E00B2127E /* ViewController.swift */; };
 		EC8902671AD8B58E00B2127E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC8902651AD8B58E00B2127E /* Main.storyboard */; };
 		EC8902691AD8B58E00B2127E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC8902681AD8B58E00B2127E /* Images.xcassets */; };
 		EC89026C1AD8B58E00B2127E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC89026A1AD8B58E00B2127E /* LaunchScreen.xib */; };
 		EC8902781AD8B58E00B2127E /* Box_ScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902771AD8B58E00B2127E /* Box_ScoreTests.swift */; };
+		EC89028A1AD8B6F500B2127E /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902891AD8B6F500B2127E /* InterfaceController.swift */; };
+		EC89028C1AD8B6F500B2127E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC89028B1AD8B6F500B2127E /* Images.xcassets */; };
+		EC8902901AD8B6F500B2127E /* Box Score WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = EC89028F1AD8B6F500B2127E /* Box Score WatchKit App.app */; };
+		EC8902981AD8B6F500B2127E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC8902961AD8B6F500B2127E /* Interface.storyboard */; };
+		EC89029A1AD8B6F500B2127E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC8902991AD8B6F500B2127E /* Images.xcassets */; };
+		EC89029D1AD8B6F500B2127E /* Box Score WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EC8902851AD8B6F500B2127E /* Box Score WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EC8902A61AD8B78A00B2127E /* GamesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902A51AD8B78A00B2127E /* GamesTVC.swift */; };
+		EC8902A81AD8B7B000B2127E /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902A71AD8B7B000B2127E /* GameVC.swift */; };
+		EC8902AA1AD8B7E700B2127E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902A91AD8B7E700B2127E /* Game.swift */; };
+		EC8902AB1AD8B7E700B2127E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902A91AD8B7E700B2127E /* Game.swift */; };
+		EC8902AD1AD94E7B00B2127E /* ScoringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902AC1AD94E7B00B2127E /* ScoringVC.swift */; };
+		EC8902AE1AD94E7B00B2127E /* ScoringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902AC1AD94E7B00B2127E /* ScoringVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,19 +34,58 @@
 			remoteGlobalIDString = EC89025B1AD8B58E00B2127E;
 			remoteInfo = "Box Score";
 		};
+		EC8902911AD8B6F500B2127E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC8902541AD8B58E00B2127E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC89028E1AD8B6F500B2127E;
+			remoteInfo = "Box Score WatchKit App";
+		};
+		EC89029B1AD8B6F500B2127E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC8902541AD8B58E00B2127E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC8902841AD8B6F500B2127E;
+			remoteInfo = "Box Score WatchKit Extension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EC8902A41AD8B6F500B2127E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EC89029D1AD8B6F500B2127E /* Box Score WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EC89025C1AD8B58E00B2127E /* Box Score.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Box Score.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8902601AD8B58E00B2127E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC8902611AD8B58E00B2127E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EC8902631AD8B58E00B2127E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EC8902661AD8B58E00B2127E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC8902681AD8B58E00B2127E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EC89026B1AD8B58E00B2127E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EC8902711AD8B58E00B2127E /* Box ScoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Box ScoreTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8902761AD8B58E00B2127E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC8902771AD8B58E00B2127E /* Box_ScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box_ScoreTests.swift; sourceTree = "<group>"; };
+		EC8902851AD8B6F500B2127E /* Box Score WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Box Score WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC8902881AD8B6F500B2127E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC8902891AD8B6F500B2127E /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		EC89028B1AD8B6F500B2127E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EC89028F1AD8B6F500B2127E /* Box Score WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Box Score WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC8902951AD8B6F500B2127E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC8902971AD8B6F500B2127E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		EC8902991AD8B6F500B2127E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EC8902A51AD8B78A00B2127E /* GamesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesTVC.swift; sourceTree = "<group>"; };
+		EC8902A71AD8B7B000B2127E /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
+		EC8902A91AD8B7E700B2127E /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		EC8902AC1AD94E7B00B2127E /* ScoringVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoringVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +103,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC8902821AD8B6F500B2127E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +118,8 @@
 			children = (
 				EC89025E1AD8B58E00B2127E /* Box Score */,
 				EC8902741AD8B58E00B2127E /* Box ScoreTests */,
+				EC8902861AD8B6F500B2127E /* Box Score WatchKit Extension */,
+				EC8902931AD8B6F500B2127E /* Box Score WatchKit App */,
 				EC89025D1AD8B58E00B2127E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +129,8 @@
 			children = (
 				EC89025C1AD8B58E00B2127E /* Box Score.app */,
 				EC8902711AD8B58E00B2127E /* Box ScoreTests.xctest */,
+				EC8902851AD8B6F500B2127E /* Box Score WatchKit Extension.appex */,
+				EC89028F1AD8B6F500B2127E /* Box Score WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,8 +138,11 @@
 		EC89025E1AD8B58E00B2127E /* Box Score */ = {
 			isa = PBXGroup;
 			children = (
+				EC8902A91AD8B7E700B2127E /* Game.swift */,
 				EC8902611AD8B58E00B2127E /* AppDelegate.swift */,
-				EC8902631AD8B58E00B2127E /* ViewController.swift */,
+				EC8902A51AD8B78A00B2127E /* GamesTVC.swift */,
+				EC8902AC1AD94E7B00B2127E /* ScoringVC.swift */,
+				EC8902A71AD8B7B000B2127E /* GameVC.swift */,
 				EC8902651AD8B58E00B2127E /* Main.storyboard */,
 				EC8902681AD8B58E00B2127E /* Images.xcassets */,
 				EC89026A1AD8B58E00B2127E /* LaunchScreen.xib */,
@@ -112,6 +176,42 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EC8902861AD8B6F500B2127E /* Box Score WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EC8902891AD8B6F500B2127E /* InterfaceController.swift */,
+				EC89028B1AD8B6F500B2127E /* Images.xcassets */,
+				EC8902871AD8B6F500B2127E /* Supporting Files */,
+			);
+			path = "Box Score WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		EC8902871AD8B6F500B2127E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC8902881AD8B6F500B2127E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC8902931AD8B6F500B2127E /* Box Score WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				EC8902961AD8B6F500B2127E /* Interface.storyboard */,
+				EC8902991AD8B6F500B2127E /* Images.xcassets */,
+				EC8902941AD8B6F500B2127E /* Supporting Files */,
+			);
+			path = "Box Score WatchKit App";
+			sourceTree = "<group>";
+		};
+		EC8902941AD8B6F500B2127E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC8902951AD8B6F500B2127E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,10 +222,12 @@
 				EC8902581AD8B58E00B2127E /* Sources */,
 				EC8902591AD8B58E00B2127E /* Frameworks */,
 				EC89025A1AD8B58E00B2127E /* Resources */,
+				EC8902A41AD8B6F500B2127E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EC89029C1AD8B6F500B2127E /* PBXTargetDependency */,
 			);
 			name = "Box Score";
 			productName = "Box Score";
@@ -150,6 +252,39 @@
 			productReference = EC8902711AD8B58E00B2127E /* Box ScoreTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		EC8902841AD8B6F500B2127E /* Box Score WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC8902A11AD8B6F500B2127E /* Build configuration list for PBXNativeTarget "Box Score WatchKit Extension" */;
+			buildPhases = (
+				EC8902811AD8B6F500B2127E /* Sources */,
+				EC8902821AD8B6F500B2127E /* Frameworks */,
+				EC8902831AD8B6F500B2127E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC8902921AD8B6F500B2127E /* PBXTargetDependency */,
+			);
+			name = "Box Score WatchKit Extension";
+			productName = "Box Score WatchKit Extension";
+			productReference = EC8902851AD8B6F500B2127E /* Box Score WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		EC89028E1AD8B6F500B2127E /* Box Score WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC89029E1AD8B6F500B2127E /* Build configuration list for PBXNativeTarget "Box Score WatchKit App" */;
+			buildPhases = (
+				EC89028D1AD8B6F500B2127E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Box Score WatchKit App";
+			productName = "Box Score WatchKit App";
+			productReference = EC89028F1AD8B6F500B2127E /* Box Score WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -165,6 +300,12 @@
 					EC8902701AD8B58E00B2127E = {
 						CreatedOnToolsVersion = 6.3;
 						TestTargetID = EC89025B1AD8B58E00B2127E;
+					};
+					EC8902841AD8B6F500B2127E = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					EC89028E1AD8B6F500B2127E = {
+						CreatedOnToolsVersion = 6.3;
 					};
 				};
 			};
@@ -183,6 +324,8 @@
 			targets = (
 				EC89025B1AD8B58E00B2127E /* Box Score */,
 				EC8902701AD8B58E00B2127E /* Box ScoreTests */,
+				EC8902841AD8B6F500B2127E /* Box Score WatchKit Extension */,
+				EC89028E1AD8B6F500B2127E /* Box Score WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -205,6 +348,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC8902831AD8B6F500B2127E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC8902901AD8B6F500B2127E /* Box Score WatchKit App.app in Resources */,
+				EC89028C1AD8B6F500B2127E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC89028D1AD8B6F500B2127E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC8902981AD8B6F500B2127E /* Interface.storyboard in Resources */,
+				EC89029A1AD8B6F500B2127E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -212,8 +373,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC8902641AD8B58E00B2127E /* ViewController.swift in Sources */,
 				EC8902621AD8B58E00B2127E /* AppDelegate.swift in Sources */,
+				EC8902AD1AD94E7B00B2127E /* ScoringVC.swift in Sources */,
+				EC8902A81AD8B7B000B2127E /* GameVC.swift in Sources */,
+				EC8902A61AD8B78A00B2127E /* GamesTVC.swift in Sources */,
+				EC8902AA1AD8B7E700B2127E /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +389,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC8902811AD8B6F500B2127E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC8902AE1AD94E7B00B2127E /* ScoringVC.swift in Sources */,
+				EC89028A1AD8B6F500B2127E /* InterfaceController.swift in Sources */,
+				EC8902AB1AD8B7E700B2127E /* Game.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -232,6 +406,16 @@
 			isa = PBXTargetDependency;
 			target = EC89025B1AD8B58E00B2127E /* Box Score */;
 			targetProxy = EC8902721AD8B58E00B2127E /* PBXContainerItemProxy */;
+		};
+		EC8902921AD8B6F500B2127E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC89028E1AD8B6F500B2127E /* Box Score WatchKit App */;
+			targetProxy = EC8902911AD8B6F500B2127E /* PBXContainerItemProxy */;
+		};
+		EC89029C1AD8B6F500B2127E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC8902841AD8B6F500B2127E /* Box Score WatchKit Extension */;
+			targetProxy = EC89029B1AD8B6F500B2127E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -250,6 +434,14 @@
 				EC89026B1AD8B58E00B2127E /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		EC8902961AD8B6F500B2127E /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC8902971AD8B6F500B2127E /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -341,6 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Box Score/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -351,6 +544,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Box Score/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -390,6 +584,62 @@
 			};
 			name = Release;
 		};
+		EC89029F1AD8B6F500B2127E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Box_Score_WatchKit_Extension;
+				INFOPLIST_FILE = "Box Score WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		EC8902A01AD8B6F500B2127E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IBSC_MODULE = Box_Score_WatchKit_Extension;
+				INFOPLIST_FILE = "Box Score WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		EC8902A21AD8B6F500B2127E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Box Score WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EC8902A31AD8B6F500B2127E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Box Score WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -415,6 +665,22 @@
 			buildConfigurations = (
 				EC89027F1AD8B58E00B2127E /* Debug */,
 				EC8902801AD8B58E00B2127E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EC89029E1AD8B6F500B2127E /* Build configuration list for PBXNativeTarget "Box Score WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC89029F1AD8B6F500B2127E /* Debug */,
+				EC8902A01AD8B6F500B2127E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EC8902A11AD8B6F500B2127E /* Build configuration list for PBXNativeTarget "Box Score WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC8902A21AD8B6F500B2127E /* Debug */,
+				EC8902A31AD8B6F500B2127E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
