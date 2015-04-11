@@ -243,6 +243,7 @@
 				EC8902591AD8B58E00B2127E /* Frameworks */,
 				EC89025A1AD8B58E00B2127E /* Resources */,
 				EC8902A41AD8B6F500B2127E /* Embed App Extensions */,
+				EC8902B41AD9939F00B2127E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -279,6 +280,7 @@
 				EC8902811AD8B6F500B2127E /* Sources */,
 				EC8902821AD8B6F500B2127E /* Frameworks */,
 				EC8902831AD8B6F500B2127E /* Resources */,
+				EC8902B51AD993AB00B2127E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -387,6 +389,35 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EC8902B41AD9939F00B2127E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+		EC8902B51AD993AB00B2127E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EC8902581AD8B58E00B2127E /* Sources */ = {

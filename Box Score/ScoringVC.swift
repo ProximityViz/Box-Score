@@ -10,7 +10,11 @@ import UIKit
 
 class ScoringVC: UIViewController
 {
+    // is this needed?
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    // scoring view
+    @IBOutlet weak var scoringView: UIView!
     @IBOutlet weak var awayTeamScoreLabel: UILabel!
     @IBOutlet weak var homeTeamScoreLabel: UILabel!
     @IBOutlet weak var runsLabel: UILabel!
@@ -24,20 +28,39 @@ class ScoringVC: UIViewController
     @IBOutlet weak var lobStepper: UIStepper!
     @IBOutlet weak var inningButton: UIButton!
     
+    // detail view
+    @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var awayTeamTextField: UITextField!
+    @IBOutlet weak var homeTeamTextField: UITextField!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    // line score view
+    @IBOutlet weak var lineScoreView: UIView!
+    @IBOutlet weak var awayRunsLabel: UILabel!
+    @IBOutlet weak var awayHitsLabel: UILabel!
+    @IBOutlet weak var awayErrorsLabel: UILabel!
+    @IBOutlet weak var homeRunsLabel: UILabel!
+    @IBOutlet weak var homeHitsLabel: UILabel!
+    @IBOutlet weak var homeErrorsLabel: UILabel!
+    
     var gameIndex = 0
     var thisGame: Game!
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        title = "Scoring"
 
         thisGame = Games.mainData().getGamesList()[gameIndex]
         
-        awayTeamScoreLabel.text = "\(thisGame.awayTeam): \(thisGame.awayRuns.reduce(0, combine: +))"
-        homeTeamScoreLabel.text = "\(thisGame.homeTeam): \(thisGame.homeRuns.reduce(0, combine: +))"
-        inningLabel.text = "Inning: \(thisGame.currentInning)"
+        title = "\(thisGame.awayTeam) @ \(thisGame.homeTeam)"
+        
+        // line score labels
+        awayRunsLabel.text = thisGame.awayRuns.reduce(0, combine: +).description
+        homeRunsLabel.text = thisGame.homeRuns.reduce(0, combine: +).description
+        awayHitsLabel.text = thisGame.awayHits.description
+        homeHitsLabel.text = thisGame.homeHits.description
+        awayErrorsLabel.text = thisGame.awayErrors.description
+        homeErrorsLabel.text = thisGame.homeErrors.description
         
         if thisGame.currentSide == "away"
         {
@@ -49,8 +72,9 @@ class ScoringVC: UIViewController
         }
         
     }
+    
+    // MARK: Change Score
 
-    // all of these actions should save to the Game
     @IBAction func stepRuns(sender: UIStepper)
     {
         if thisGame.currentSide == "away"
@@ -145,6 +169,11 @@ class ScoringVC: UIViewController
     
     func displayAwayInning()
     {
+        // scoring labels
+        // TODO: rename "teamScore" labels
+        awayTeamScoreLabel.text = "\(thisGame.awayTeam) Batting"
+        homeTeamScoreLabel.text = "\(thisGame.homeTeam) Fielding"
+        inningLabel.text = "Inning: T\(thisGame.currentInning)"
         awayTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         homeTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16)
         // change stepper value
@@ -160,6 +189,9 @@ class ScoringVC: UIViewController
     
     func displayHomeInning()
     {
+        awayTeamScoreLabel.text = "\(thisGame.awayTeam) Fielding"
+        homeTeamScoreLabel.text = "\(thisGame.homeTeam) Batting"
+        inningLabel.text = "Inning: B\(thisGame.currentInning)"
         awayTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16)
         homeTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         // change stepper value
@@ -173,11 +205,34 @@ class ScoringVC: UIViewController
         lobLabel.text = "Left on Base: \(thisGame.homeLoB)"
     }
     
+    // MARK: UI
+    
+    @IBAction func changeView(sender: UISegmentedControl)
+    {
+        Games.mainData().saveGame(thisGame, atIndex: gameIndex)
+        
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0: // detail
+            detailView.hidden = false
+            scoringView.hidden = true
+        case 1:
+            scoringView.hidden = false
+            detailView.hidden = true
+        default:
+            break
+        }
+    }
+    
+    // minimize keyboard on tap outside
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        view.endEditing(true)
+    }
+    
     // temporary
     @IBAction func saveGame(sender: AnyObject)
     {
-        Games.mainData().deleteGame(gameIndex)
-        Games.mainData().addGame(thisGame)
+        Games.mainData().saveGame(thisGame, atIndex: gameIndex)
     }
     
 }

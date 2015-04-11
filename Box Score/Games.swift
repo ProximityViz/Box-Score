@@ -60,6 +60,12 @@ class Games: NSObject {
         saveGames(gamesList)
     }
     
+    func saveGame(gameData: Game, atIndex index: Int)
+    {
+        deleteGame(index)
+        addGame(gameData)
+    }
+    
     func deleteGame(index: Int)
     {
         gamesList.removeAtIndex(index)
