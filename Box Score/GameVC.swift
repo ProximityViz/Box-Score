@@ -16,16 +16,33 @@ class GameVC: UIViewController
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var awayRunsLabel: UILabel!
     @IBOutlet weak var awayHitsLabel: UILabel!
-    @IBOutlet weak var awayErrorsLabel: NSLayoutConstraint!
+    @IBOutlet weak var awayErrorsLabel: UILabel!
     @IBOutlet weak var homeRunsLabel: UILabel!
     @IBOutlet weak var homeHitsLabel: UILabel!
     @IBOutlet weak var homeErrorsLabel: UILabel!
     
+    var gameIndex = 0
+    var thisGame: Game!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        thisGame = Games.mainData().getGamesList()[gameIndex]
+        
+        title = "\(thisGame.awayTeam) @ \(thisGame.homeTeam)"
+        awayTeamTextField.text = thisGame.awayTeam
+        homeTeamTextField.text = thisGame.homeTeam
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+        dateLabel.text = dateFormatter.stringFromDate(thisGame.date)
+        awayRunsLabel.text = thisGame.awayRuns.reduce(0, combine: +).description
+        homeRunsLabel.text = thisGame.homeRuns.reduce(0, combine: +).description
+        awayHitsLabel.text = thisGame.awayHits.description
+        homeHitsLabel.text = thisGame.homeHits.description
+        awayErrorsLabel.text = thisGame.awayErrors.description
+        homeErrorsLabel.text = thisGame.homeErrors.description
+        // LoB
     }
 
     override func didReceiveMemoryWarning()

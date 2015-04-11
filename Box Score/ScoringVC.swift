@@ -24,46 +24,28 @@ class ScoringVC: UIViewController
     @IBOutlet weak var lobStepper: UIStepper!
     @IBOutlet weak var inningButton: UIButton!
     
+    var gameIndex = 0
     var thisGame: Game!
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        title = "Scoring"
 
-        // change this so it happens when you navigate from plus button
-        thisGame = Game()
+        thisGame = Games.mainData().getGamesList()[gameIndex]
         
         awayTeamScoreLabel.text = "\(thisGame.awayTeam): \(thisGame.awayRuns.reduce(0, combine: +))"
         homeTeamScoreLabel.text = "\(thisGame.homeTeam): \(thisGame.homeRuns.reduce(0, combine: +))"
         inningLabel.text = "Inning: \(thisGame.currentInning)"
         
-        
-        // change this to use newAwayInning function
         if thisGame.currentSide == "away"
         {
-            awayTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
-            homeTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16)
-            runsStepper.value = Double(thisGame.awayRuns.reduce(0, combine: +))
-            runsLabel.text = "Runs: \(Int(runsStepper.value))"
-            hitsStepper.value = Double(thisGame.awayHits)
-            hitsLabel.text = "Hits: \(Int(hitsStepper.value))"
-            errorsStepper.value = Double(thisGame.awayErrors)
-            errorsLabel.text = "Errors: \(Int(errorsStepper.value))"
-            lobStepper.value = Double(thisGame.awayLoB)
-            lobLabel.text = "Left on Base: \(Int(lobStepper.value))"
+            displayAwayInning()
         }
         else
         {
-            awayTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16)
-            homeTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
-            runsStepper.value = Double(thisGame.homeRuns.reduce(0, combine: +))
-            runsLabel.text = "Runs: \(Int(runsStepper.value))"
-            hitsStepper.value = Double(thisGame.homeHits)
-            hitsLabel.text = "Hits: \(thisGame.homeHits)"
-            errorsStepper.value = Double(thisGame.homeErrors)
-            errorsLabel.text = "Errors: \(thisGame.homeErrors)"
-            lobStepper.value = Double(thisGame.homeLoB)
-            lobLabel.text = "Left on Base: \(thisGame.homeLoB)"
+            displayHomeInning()
         }
         
     }
@@ -145,25 +127,26 @@ class ScoringVC: UIViewController
     {
         if thisGame.currentSide == "away"
         {
-            newHomeInning()
+            if thisGame.homeRuns.count < thisGame.currentInning { thisGame.homeRuns.append(0) }
+            displayHomeInning()
             thisGame.currentSide = "home"
         }
         else
         {
             thisGame.currentInning = thisGame.currentInning + 1
             inningLabel.text = "Inning: \(thisGame.currentInning)"
-            newAwayInning()
+            // add space for the next inning
+            if thisGame.awayRuns.count < thisGame.currentInning { thisGame.awayRuns.append(0) }
+            displayAwayInning()
             thisGame.currentSide = "away"
         }
         
     }
     
-    func newAwayInning()
+    func displayAwayInning()
     {
         awayTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
         homeTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16)
-        // add space for the next inning
-        if thisGame.awayRuns.count < thisGame.currentInning { thisGame.awayRuns.append(0) }
         // change stepper value
         runsStepper.value = Double(thisGame.awayRuns.reduce(0, combine: +))
         runsLabel.text = "Runs: \(Int(runsStepper.value))"
@@ -175,11 +158,10 @@ class ScoringVC: UIViewController
         lobLabel.text = "Left on Base: \(thisGame.awayLoB)"
     }
     
-    func newHomeInning()
+    func displayHomeInning()
     {
         awayTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16)
         homeTeamScoreLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 16)
-        if thisGame.homeRuns.count < thisGame.currentInning { thisGame.homeRuns.append(0) }
         // change stepper value
         runsStepper.value = Double(thisGame.homeRuns.reduce(0, combine: +))
         runsLabel.text = "Runs: \(Int(runsStepper.value))"
@@ -189,6 +171,13 @@ class ScoringVC: UIViewController
         errorsLabel.text = "Errors: \(thisGame.homeErrors)"
         lobStepper.value = Double(thisGame.homeLoB)
         lobLabel.text = "Left on Base: \(thisGame.homeLoB)"
+    }
+    
+    // temporary
+    @IBAction func saveGame(sender: AnyObject)
+    {
+        Games.mainData().deleteGame(gameIndex)
+        Games.mainData().addGame(thisGame)
     }
     
 }

@@ -9,49 +9,51 @@
 import UIKit
 
 class GamesTVC: UITableViewController {
-
+    
+    private var gamesData = [Game]()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        title = "Games"
+        
     }
-
-    override func didReceiveMemoryWarning()
+    
+    override func viewWillAppear(animated: Bool)
     {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        super.viewWillAppear(true)
+        
+        gamesData = Games.mainData().getGamesList()
+        
+        // need datasource & delegate?
+        
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+        return gamesData.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
 
-        // Configure the cell...
+        cell.textLabel?.text = dateFormatter.stringFromDate(gamesData[indexPath.row].date)
+        cell.detailTextLabel?.text = "\(gamesData[indexPath.row].awayTeam) \(gamesData[indexPath.row].awayRuns.reduce(0, combine: +)) @ \(gamesData[indexPath.row].homeTeam) \(gamesData[indexPath.row].homeRuns.reduce(0, combine: +))"
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -88,14 +90,19 @@ class GamesTVC: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "newGame"
+        {
+            Games.mainData().addGame(Game())
+            let vc = segue.destinationViewController as! ScoringVC
+            vc.gameIndex = 0
+        }
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

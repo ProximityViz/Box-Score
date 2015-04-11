@@ -24,6 +24,8 @@
 		EC8902AB1AD8B7E700B2127E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902A91AD8B7E700B2127E /* Game.swift */; };
 		EC8902AD1AD94E7B00B2127E /* ScoringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902AC1AD94E7B00B2127E /* ScoringVC.swift */; };
 		EC8902AE1AD94E7B00B2127E /* ScoringVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902AC1AD94E7B00B2127E /* ScoringVC.swift */; };
+		EC8902B21AD9762B00B2127E /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902B11AD9762B00B2127E /* Games.swift */; };
+		EC8902B31AD9762B00B2127E /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8902B11AD9762B00B2127E /* Games.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,7 @@
 		EC8902A71AD8B7B000B2127E /* GameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		EC8902A91AD8B7E700B2127E /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		EC8902AC1AD94E7B00B2127E /* ScoringVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoringVC.swift; sourceTree = "<group>"; };
+		EC8902B11AD9762B00B2127E /* Games.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,11 +141,9 @@
 		EC89025E1AD8B58E00B2127E /* Box Score */ = {
 			isa = PBXGroup;
 			children = (
-				EC8902A91AD8B7E700B2127E /* Game.swift */,
+				EC8902AF1AD9747B00B2127E /* Models */,
 				EC8902611AD8B58E00B2127E /* AppDelegate.swift */,
-				EC8902A51AD8B78A00B2127E /* GamesTVC.swift */,
-				EC8902AC1AD94E7B00B2127E /* ScoringVC.swift */,
-				EC8902A71AD8B7B000B2127E /* GameVC.swift */,
+				EC8902B01AD9748900B2127E /* Controllers */,
 				EC8902651AD8B58E00B2127E /* Main.storyboard */,
 				EC8902681AD8B58E00B2127E /* Images.xcassets */,
 				EC89026A1AD8B58E00B2127E /* LaunchScreen.xib */,
@@ -210,6 +211,25 @@
 				EC8902951AD8B6F500B2127E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC8902AF1AD9747B00B2127E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EC8902B11AD9762B00B2127E /* Games.swift */,
+				EC8902A91AD8B7E700B2127E /* Game.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		EC8902B01AD9748900B2127E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EC8902A51AD8B78A00B2127E /* GamesTVC.swift */,
+				EC8902AC1AD94E7B00B2127E /* ScoringVC.swift */,
+				EC8902A71AD8B7B000B2127E /* GameVC.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +396,7 @@
 				EC8902621AD8B58E00B2127E /* AppDelegate.swift in Sources */,
 				EC8902AD1AD94E7B00B2127E /* ScoringVC.swift in Sources */,
 				EC8902A81AD8B7B000B2127E /* GameVC.swift in Sources */,
+				EC8902B21AD9762B00B2127E /* Games.swift in Sources */,
 				EC8902A61AD8B78A00B2127E /* GamesTVC.swift in Sources */,
 				EC8902AA1AD8B7E700B2127E /* Game.swift in Sources */,
 			);
@@ -396,6 +417,7 @@
 				EC8902AE1AD94E7B00B2127E /* ScoringVC.swift in Sources */,
 				EC89028A1AD8B6F500B2127E /* InterfaceController.swift in Sources */,
 				EC8902AB1AD8B7E700B2127E /* Game.swift in Sources */,
+				EC8902B31AD9762B00B2127E /* Games.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,10 +14,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="O7n-U4-CHG">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="hv9-RX-Krj" detailTextLabel="hrR-kX-e0G" style="IBUITableViewCellStyleValue2" id="O7n-U4-CHG">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O7n-U4-CHG" id="tw7-pL-B4G">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hv9-RX-Krj">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hrR-kX-e0G">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="wCx-dk-jBt" kind="show" id="Qxi-Pm-6Za"/>
@@ -32,10 +46,13 @@
                     <navigationItem key="navigationItem" id="Yvd-Zp-08L">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="bt0-RY-CBA">
                             <connections>
-                                <segue destination="iVK-sJ-5hk" kind="show" id="1cD-ax-0Bw"/>
+                                <segue destination="iVK-sJ-5hk" kind="show" identifier="newGame" id="Phy-vd-yfa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="SeN-TH-Ops" id="M4T-4I-aE5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovh-XH-143" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -309,7 +326,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="awayErrorsLabel" destination="yI6-eA-GXh" id="Grt-R5-bdq"/>
+                        <outlet property="awayErrorsLabel" destination="EMO-wr-pNy" id="pI2-Dm-bio"/>
                         <outlet property="awayHitsLabel" destination="jTT-gh-hWO" id="nHA-o3-0OS"/>
                         <outlet property="awayRunsLabel" destination="5Jp-gP-N7X" id="ANt-Vt-bjX"/>
                         <outlet property="awayTeamTextField" destination="ii1-R8-a2u" id="xbR-yl-ee3"/>
@@ -466,6 +483,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTg-j2-q4j">
+                                <rect key="frame" x="283" y="533" width="34" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="sHy-EV-ij5"/>
+                                    <constraint firstAttribute="height" constant="30" id="uT6-ne-RA7"/>
+                                </constraints>
+                                <state key="normal" title="Save">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveGame:" destination="iVK-sJ-5hk" eventType="touchUpInside" id="9OJ-Hn-76I"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -482,6 +512,7 @@
                             <constraint firstItem="Ctg-wt-UCl" firstAttribute="leading" secondItem="qzJ-lz-6yi" secondAttribute="leadingMargin" id="JYu-nN-NJn"/>
                             <constraint firstItem="n4m-EI-NcN" firstAttribute="top" secondItem="V8D-hR-cIy" secondAttribute="bottom" constant="8" id="Kbd-2j-dbS"/>
                             <constraint firstItem="Uvn-ZR-rVe" firstAttribute="trailing" secondItem="qzJ-lz-6yi" secondAttribute="trailingMargin" id="Mhp-Dw-OLY"/>
+                            <constraint firstItem="JoK-ma-f4G" firstAttribute="top" secondItem="wTg-j2-q4j" secondAttribute="bottom" constant="8" id="QVO-wZ-P1h"/>
                             <constraint firstItem="Uvn-ZR-rVe" firstAttribute="top" secondItem="76z-c4-5xE" secondAttribute="bottom" constant="8" id="Qdv-Ni-vb0"/>
                             <constraint firstItem="oYo-5r-x1m" firstAttribute="leading" secondItem="qzJ-lz-6yi" secondAttribute="leadingMargin" id="SD1-HE-IHz"/>
                             <constraint firstItem="n4m-EI-NcN" firstAttribute="leading" secondItem="oYo-5r-x1m" secondAttribute="trailing" constant="8" id="SLT-iy-PdA"/>
@@ -494,6 +525,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="diN-nY-Skf" secondAttribute="trailing" id="eJt-8H-ejw"/>
                             <constraint firstItem="Uvn-ZR-rVe" firstAttribute="leading" secondItem="u4Y-Og-K8Z" secondAttribute="trailing" constant="8" id="fWt-sl-3AN"/>
                             <constraint firstItem="diN-nY-Skf" firstAttribute="top" secondItem="n4m-EI-NcN" secondAttribute="bottom" constant="45" id="ghX-qh-QQj"/>
+                            <constraint firstAttribute="centerX" secondItem="wTg-j2-q4j" secondAttribute="centerX" id="hEx-xD-72f"/>
                             <constraint firstItem="ot3-t4-saM" firstAttribute="leading" secondItem="qzJ-lz-6yi" secondAttribute="leadingMargin" id="hYR-N9-jGi"/>
                             <constraint firstItem="t1g-IX-6yN" firstAttribute="top" secondItem="oYo-5r-x1m" secondAttribute="bottom" constant="45" id="hdz-8r-XN7"/>
                             <constraint firstItem="ot3-t4-saM" firstAttribute="top" secondItem="Bxx-mR-lYJ" secondAttribute="bottom" constant="8" id="lsP-kj-HNL"/>

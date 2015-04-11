@@ -94,26 +94,3 @@ class Game: NSObject, NSCoding
 //    }
    
 }
-
-func saveGames(games: [Game])
-{
-    // for WatchKit
-    NSKeyedArchiver.setClassName("Game", forClass: Game.self)
-    
-    let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(games as NSArray)
-    defaults?.setObject(archivedObject, forKey: "games")
-    defaults?.synchronize()
-}
-
-func retrieveGames() -> [Game]?
-{
-    if let unarchivedObject = defaults?.objectForKey("games") as? NSData {
-        
-        // WatchKit
-        NSKeyedUnarchiver.setClass(Game.self, forClassName: "Game")
-        
-        return NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Game]
-    }
-    
-    return nil
-}
