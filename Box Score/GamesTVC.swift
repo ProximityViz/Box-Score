@@ -12,6 +12,8 @@ class GamesTVC: UITableViewController {
     
     private var gamesData = [Game]()
     
+    var index = 0
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -43,7 +45,8 @@ class GamesTVC: UITableViewController {
         return gamesData.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         
         let dateFormatter = NSDateFormatter()
@@ -53,6 +56,16 @@ class GamesTVC: UITableViewController {
         cell.detailTextLabel?.text = "\(gamesData[indexPath.row].awayTeam) \(gamesData[indexPath.row].awayRuns.reduce(0, combine: +)) @ \(gamesData[indexPath.row].homeTeam) \(gamesData[indexPath.row].homeRuns.reduce(0, combine: +))"
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        index = indexPath.row
+//        performSegueWithIdentifier("showDetail", sender: self)
+//        let vc = ScoringVC()
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("ScoringVC") as! ScoringVC
+        vc.gameIndex = indexPath.row
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     /*
@@ -91,8 +104,7 @@ class GamesTVC: UITableViewController {
     */
 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         if segue.identifier == "newGame"
@@ -101,8 +113,11 @@ class GamesTVC: UITableViewController {
             let vc = segue.destinationViewController as! ScoringVC
             vc.gameIndex = 0
         }
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+//        else if segue.identifier == "showDetail"
+//        {
+//            let vc = segue.destinationViewController as! ScoringVC
+//            vc.gameIndex = index
+//        }
     }
 
 }

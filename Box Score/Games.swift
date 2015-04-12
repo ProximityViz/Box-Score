@@ -12,17 +12,7 @@ private let _mainData: Games = Games()
 
 class Games: NSObject {
     
-    // persistencyManager stuff?
-    
     private var gamesList = [Game]()
-    
-//    private let persistencyManager: PersistencyManager
-//    
-//    override init() {
-//        persistencyManager = PersistencyManager()
-//        
-//        super.init()
-//    }
     
     class func mainData() -> Games
     {
@@ -32,13 +22,9 @@ class Games: NSObject {
     
     func getGamesList() -> [Game]
     {
-        if defaults?.objectForKey("gamesData") == nil
-        {
-            // create a game to use now?
-            // or just remove this if statement?
-        }
         if retrieveGames() == nil
         {
+            println("test")
             gamesList = []
         } else
         {
@@ -87,6 +73,7 @@ func saveGames(games: [Game])
 
 func retrieveGames() -> [Game]?
 {
+    
     if let unarchivedObject = defaults?.objectForKey("games") as? NSData {
         
         // WatchKit

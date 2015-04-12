@@ -21,8 +21,7 @@ class Game: NSObject, NSCoding
     var homeHits:Int!
     var awayErrors:Int!
     var homeErrors:Int!
-    var awayLoB:Int!
-    var homeLoB:Int!
+    var outs:Int!
     var currentInning:Int!
     var currentSide:String!
     var date:NSDate!
@@ -37,8 +36,7 @@ class Game: NSObject, NSCoding
         self.homeHits = aDecoder.decodeIntegerForKey("homeHits") as Int
         self.awayErrors = aDecoder.decodeIntegerForKey("awayErrors") as Int
         self.homeErrors = aDecoder.decodeIntegerForKey("homeErrors") as Int
-        self.awayLoB = aDecoder.decodeIntegerForKey("awayLoB") as Int
-        self.homeLoB = aDecoder.decodeIntegerForKey("homeLoB") as Int
+        self.outs = aDecoder.decodeIntegerForKey("outs") as Int
         self.currentInning = aDecoder.decodeIntegerForKey("currentInning") as Int
         self.currentSide = aDecoder.decodeObjectForKey("currentSide") as! String
         self.date = aDecoder.decodeObjectForKey("date") as! NSDate
@@ -56,8 +54,7 @@ class Game: NSObject, NSCoding
         homeHits = 0
         awayErrors = 0
         homeErrors = 0
-        awayLoB = 0
-        homeLoB = 0
+        outs = 0
         currentInning = 1
         currentSide = "away"
         date = NSDate()
@@ -73,24 +70,10 @@ class Game: NSObject, NSCoding
         aCoder.encodeInteger(homeHits, forKey: "homeHits")
         aCoder.encodeInteger(awayErrors, forKey: "awayErrors")
         aCoder.encodeInteger(homeErrors, forKey: "homeErrors")
-        aCoder.encodeInteger(awayLoB, forKey: "awayLoB")
-        aCoder.encodeInteger(homeLoB, forKey: "homeLoB")
+        aCoder.encodeInteger(outs, forKey: "outs")
         aCoder.encodeInteger(currentInning, forKey: "currentInning")
         aCoder.encodeObject(currentSide, forKey: "currentSide")
         aCoder.encodeObject(date, forKey: "date")
     }
-    
-//    func changeRuns(amount: Int)
-//    {
-//        if currentSide == "away"
-//        {
-//            if awayRuns.count >= currentInning { awayRuns[currentInning - 1] += amount }
-//        }
-//        else
-//        {
-//            if homeRuns.count >= currentInning { homeRuns[currentInning - 1] += amount }
-//        }
-//        
-//    }
    
 }

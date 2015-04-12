@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>7D0BBEB0-D111-4254-856F-7280A396AF9D</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Box Score</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3592C15887A21472F3E4F992C5EB81C9336A66FB</key>
 		<string>https://github.com/ProximityViz/Box-Score.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Box Score.xcodeproj/project.xcworkspace</string>
+	<string>Box Score.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3592C15887A21472F3E4F992C5EB81C9336A66FB</key>

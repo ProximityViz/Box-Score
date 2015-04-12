@@ -8,24 +8,23 @@
 
 import UIKit
 
-class ScoringVC: UIViewController
+class ScoringVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     // is this needed?
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // scoring view
     @IBOutlet weak var scoringView: UIView!
+    @IBOutlet weak var inningLabel: UILabel!
     @IBOutlet weak var awayTeamScoreLabel: UILabel!
     @IBOutlet weak var homeTeamScoreLabel: UILabel!
     @IBOutlet weak var runsLabel: UILabel!
     @IBOutlet weak var hitsLabel: UILabel!
     @IBOutlet weak var errorsLabel: UILabel!
-    @IBOutlet weak var lobLabel: UILabel!
-    @IBOutlet weak var inningLabel: UILabel!
+    @IBOutlet weak var outsLabel: UILabel!
     @IBOutlet weak var runsStepper: UIStepper!
     @IBOutlet weak var hitsStepper: UIStepper!
     @IBOutlet weak var errorsStepper: UIStepper!
-    @IBOutlet weak var lobStepper: UIStepper!
     @IBOutlet weak var inningButton: UIButton!
     
     // detail view
@@ -36,6 +35,8 @@ class ScoringVC: UIViewController
     
     // line score view
     @IBOutlet weak var lineScoreView: UIView!
+    @IBOutlet weak var awayCollectionView: UICollectionView!
+    @IBOutlet weak var homeCollectionView: UICollectionView!
     @IBOutlet weak var awayRunsLabel: UILabel!
     @IBOutlet weak var awayHitsLabel: UILabel!
     @IBOutlet weak var awayErrorsLabel: UILabel!
@@ -49,10 +50,26 @@ class ScoringVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        awayCollectionView.delegate = self
+        awayCollectionView.dataSource = self
+        homeCollectionView.delegate = self
+        homeCollectionView.dataSource = self
+        
+        // FIXME: may not need this
+        awayCollectionView.reloadData()
+        homeCollectionView.reloadData()
 
         thisGame = Games.mainData().getGamesList()[gameIndex]
         
         title = "\(thisGame.awayTeam) @ \(thisGame.homeTeam)"
+        
+        // detail view
+        awayTeamTextField.text = thisGame.awayTeam == "Away" ? nil : thisGame.awayTeam
+        homeTeamTextField.text = thisGame.homeTeam == "Home" ? nil : thisGame.homeTeam
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+        dateLabel.text = dateFormatter.stringFromDate(thisGame.date)
         
         // line score labels
         awayRunsLabel.text = thisGame.awayRuns.reduce(0, combine: +).description
@@ -89,6 +106,7 @@ class ScoringVC: UIViewController
             {
                 thisGame.awayRuns[thisGame.currentInning - 1]--
             }
+            awayCollectionView.reloadData()
         }
         else
         {
@@ -102,10 +120,11 @@ class ScoringVC: UIViewController
             {
                 thisGame.homeRuns[thisGame.currentInning - 1]--
             }
+            homeCollectionView.reloadData()
         }
         runsLabel.text = "Runs: \(Int(runsStepper.value))"
-        awayTeamScoreLabel.text = "\(thisGame.awayTeam): \(thisGame.awayRuns.reduce(0, combine: +))"
-        homeTeamScoreLabel.text = "\(thisGame.homeTeam): \(thisGame.homeRuns.reduce(0, combine: +))"
+        awayRunsLabel.text = thisGame.awayRuns.reduce(0, combine: +).description
+        homeRunsLabel.text = thisGame.homeRuns.reduce(0, combine: +).description
     }
     
     @IBAction func stepHits(sender: UIStepper)
@@ -113,57 +132,59 @@ class ScoringVC: UIViewController
         if thisGame.currentSide == "away"
         {
             thisGame.awayHits = Int(sender.value)
+            awayHitsLabel.text = Int(sender.value).description
         }
         else
         {
             thisGame.homeHits = Int(sender.value)
+            homeHitsLabel.text = Int(sender.value).description
         }
         hitsLabel.text = "Hits: \(Int(hitsStepper.value))"
     }
     
+    // NOTE: ERRORS WORK OPPOSITE OF OTHER STATS BECAUSE THEY GO TO THE OTHER TEAM
     @IBAction func stepErrors(sender: UIStepper)
     {
         if thisGame.currentSide == "away"
         {
-            thisGame.awayErrors = Int(sender.value)
+            thisGame.homeErrors = Int(sender.value)
+            homeErrorsLabel.text = Int(sender.value).description
         }
         else
         {
-            thisGame.homeErrors = Int(sender.value)
+            thisGame.awayErrors = Int(sender.value)
+            awayErrorsLabel.text = Int(sender.value).description
         }
         errorsLabel.text = "Errors: \(Int(errorsStepper.value))"
     }
     
-    @IBAction func stepLoB(sender: UIStepper)
+    @IBAction func stepOuts(sender: UIStepper)
     {
-        if thisGame.currentSide == "away"
+        thisGame.outs = Int(sender.value)
+        if thisGame.outs == 3
         {
-            thisGame.awayLoB = Int(sender.value)
+            if thisGame.currentSide == "away"
+            {
+                awayCollectionView.reloadData()
+                if thisGame.homeRuns.count < thisGame.currentInning { thisGame.homeRuns.append(0) }
+                displayHomeInning()
+                thisGame.currentSide = "home"
+            }
+            else
+            {
+                homeCollectionView.reloadData()
+                thisGame.currentInning = thisGame.currentInning + 1
+                inningLabel.text = "Inning: \(thisGame.currentInning)"
+                // add space for the next inning
+                if thisGame.awayRuns.count < thisGame.currentInning { thisGame.awayRuns.append(0) }
+                displayAwayInning()
+                thisGame.currentSide = "away"
+            }
+            thisGame.outs = 0
+            sender.value = 0
+            // refresh collection views
         }
-        else
-        {
-            thisGame.homeLoB = Int(sender.value)
-        }
-        lobLabel.text = "Left on Base: \(Int(lobStepper.value))"
-    }
-    
-    @IBAction func changeTeam(sender: AnyObject)
-    {
-        if thisGame.currentSide == "away"
-        {
-            if thisGame.homeRuns.count < thisGame.currentInning { thisGame.homeRuns.append(0) }
-            displayHomeInning()
-            thisGame.currentSide = "home"
-        }
-        else
-        {
-            thisGame.currentInning = thisGame.currentInning + 1
-            inningLabel.text = "Inning: \(thisGame.currentInning)"
-            // add space for the next inning
-            if thisGame.awayRuns.count < thisGame.currentInning { thisGame.awayRuns.append(0) }
-            displayAwayInning()
-            thisGame.currentSide = "away"
-        }
+        outsLabel.text = "Outs: \(Int(thisGame.outs))"
         
     }
     
@@ -181,10 +202,8 @@ class ScoringVC: UIViewController
         runsLabel.text = "Runs: \(Int(runsStepper.value))"
         hitsStepper.value = Double(thisGame.awayHits)
         hitsLabel.text = "Hits: \(thisGame.awayHits)"
-        errorsStepper.value = Double(thisGame.awayErrors)
-        errorsLabel.text = "Errors: \(thisGame.awayErrors)"
-        lobStepper.value = Double(thisGame.awayLoB)
-        lobLabel.text = "Left on Base: \(thisGame.awayLoB)"
+        errorsStepper.value = Double(thisGame.homeErrors)
+        errorsLabel.text = "Errors: \(thisGame.homeErrors)"
     }
     
     func displayHomeInning()
@@ -199,10 +218,8 @@ class ScoringVC: UIViewController
         runsLabel.text = "Runs: \(Int(runsStepper.value))"
         hitsStepper.value = Double(thisGame.homeHits)
         hitsLabel.text = "Hits: \(thisGame.homeHits)"
-        errorsStepper.value = Double(thisGame.homeErrors)
-        errorsLabel.text = "Errors: \(thisGame.homeErrors)"
-        lobStepper.value = Double(thisGame.homeLoB)
-        lobLabel.text = "Left on Base: \(thisGame.homeLoB)"
+        errorsStepper.value = Double(thisGame.awayErrors)
+        errorsLabel.text = "Errors: \(thisGame.awayErrors)"
     }
     
     // MARK: UI
@@ -225,8 +242,66 @@ class ScoringVC: UIViewController
     }
     
     // minimize keyboard on tap outside
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent)
+    {
+        println("touch")
         view.endEditing(true)
+        thisGame.awayTeam = awayTeamTextField.text == "" ? "Away" : awayTeamTextField.text
+        thisGame.homeTeam = homeTeamTextField.text == "" ? "Home" : homeTeamTextField.text
+        
+        title = "\(thisGame.awayTeam) @ \(thisGame.homeTeam)"
+        // TODO: possibly save here?
+    }
+    
+    // MARK: Collection Views
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return thisGame.awayRuns.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! UICollectionViewCell
+        
+        var runs = ""
+        if collectionView == awayCollectionView
+        {
+            runs = thisGame.awayRuns[indexPath.row].description
+        }
+        else
+        {
+            if thisGame.homeRuns.count > indexPath.row
+            {
+                runs = thisGame.homeRuns[indexPath.row].description
+            }
+        }
+        
+//        cell.backgroundColor = UIColor.grayColor()
+        
+        let label = UILabel(frame: CGRectMake(1, 1, 14, 21))
+        label.textAlignment = NSTextAlignment.Right
+        label.backgroundColor = UIColor.whiteColor()
+        label.adjustsFontSizeToFitWidth = true
+        label.text = runs
+        cell.addSubview(label)
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+    {
+        if (indexPath.row + 1) % 3 == 0
+        {
+            return CGSizeMake(22, 23)
+        }
+        else
+        {
+            return CGSizeMake(16, 23)
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
     }
     
     // temporary

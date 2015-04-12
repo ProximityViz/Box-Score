@@ -1,8 +1,8 @@
 //
-//  InterfaceController.swift
-//  Box Score WatchKit Extension
+//  ScoringIC.swift
+//  Box Score
 //
-//  Created by Mollie on 4/10/15.
+//  Created by Mollie on 4/11/15.
 //  Copyright (c) 2015 Proximity Viz LLC. All rights reserved.
 //
 
@@ -10,12 +10,15 @@ import WatchKit
 import Foundation
 
 
-class InterfaceController: WKInterfaceController {
+class ScoringIC: WKInterfaceController {
+    
+    var thisGame: Game!
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        // Configure interface objects here.
+        thisGame = Games.mainData().getGamesList()[gameIndex]
+        
     }
 
     override func willActivate() {

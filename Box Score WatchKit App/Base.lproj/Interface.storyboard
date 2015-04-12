@@ -1,15 +1,105 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6221" systemVersion="13E28" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="owB-qZ-Rz9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
+        <!--GamesIC-->
+        <scene sceneID="cNx-LY-k53">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="owB-qZ-Rz9" customClass="GamesIC" customModule="Box_Score_WatchKit_Extension">
+                    <items>
+                        <button width="1" alignment="left" title="New Game" id="M6n-Es-u22">
+                            <connections>
+                                <action selector="createNewGame" destination="owB-qZ-Rz9" id="oxa-h5-kMN"/>
+                            </connections>
+                        </button>
+                        <table alignment="left" id="B7y-kx-C1i">
+                            <items>
+                                <tableRow identifier="GamesTRC" id="OyP-qR-pVN" customClass="GamesTRC" customModule="Box_Score_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" layout="vertical" id="Zvv-rm-Ohn">
+                                        <items>
+                                            <label width="1" height="0.5" alignment="left" verticalAlignment="bottom" text="Label" textAlignment="center" id="Nb1-pE-7OL"/>
+                                            <label width="1" height="0.5" alignment="left" text="Label" textAlignment="center" id="GNK-LG-4Bi"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="gameDateLabel" destination="GNK-LG-4Bi" id="OIW-fl-kQd"/>
+                                        <outlet property="gameTeamsLabel" destination="Nb1-pE-7OL" id="w8i-so-OEz"/>
+                                        <segue destination="61b-sU-0uc" kind="push" id="dEe-fm-PUW"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="B7y-kx-C1i" id="iwC-cH-FJY"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="202" y="336"/>
+        </scene>
+        <!--ScoringIC-->
+        <scene sceneID="jfu-No-8L0">
+            <objects>
+                <controller identifier="ScoringIC" id="61b-sU-0uc" customClass="ScoringIC" customModule="Box_Score_WatchKit_Extension">
+                    <items>
+                        <label width="136" height="0.20000000000000001" alignment="left" text="T1: Away Team" textAlignment="center" id="NpB-ej-OOT"/>
+                        <group width="1" height="0.40000000000000002" alignment="left" id="qSy-x0-mVb">
+                            <items>
+                                <button width="0.5" height="1" alignment="left" title="Runs: 0" id="DOt-Ly-jdi"/>
+                                <button width="0.5" height="1" alignment="left" title="Hits: 0" id="kSJ-XY-I9U"/>
+                            </items>
+                        </group>
+                        <group width="1" height="0.40000000000000002" alignment="left" id="CUb-Vi-aEi">
+                            <items>
+                                <button width="0.5" height="1" alignment="left" title="Errors: 0" id="wwA-va-lG4"/>
+                                <button width="0.5" height="1" alignment="left" title="Outs: 0" id="I9z-oP-MBO"/>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="419" y="336"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="081-TS-gP7">
+            <objects>
+                <controller id="F4e-Hd-AUm">
+                    <items>
+                        <label width="1" alignment="left" text="T1: Away Team" id="qig-MN-0XY"/>
+                        <group width="1" alignment="left" id="hYp-0U-hz5">
+                            <items>
+                                <button width="0.33300000000000002" alignment="left" title="R 0" id="F8t-Vq-rdY"/>
+                                <button width="0.33300000000000002" alignment="left" title="H 0" id="ZF2-ET-Hjl"/>
+                                <button width="0.33300000000000002" alignment="left" title="E 0" id="4DS-xm-qzB"/>
+                            </items>
+                        </group>
+                        <label alignment="left" text="Outs" id="YhW-ry-obK">
+                            <variation key="device=watch38mm" text="Outs"/>
+                        </label>
+                        <slider width="1" alignment="left" value="1" maximum="3" steps="3" id="F8f-8e-hOb"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="419" y="566"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="1PD-du-jUk">
+            <objects>
+                <controller id="4za-wy-R5x">
+                    <menu key="menu" id="ePe-6o-OHC">
+                        <items>
+                            <menuItem title="Menu Item" icon="block" id="hf9-Xu-QhT"/>
+                            <menuItem title="Menu Item" icon="accept" id="r0B-5M-Kwy"/>
+                            <menuItem title="Menu Item" icon="maybe" id="ZK7-Tr-8bA"/>
+                            <menuItem title="Menu Item" icon="speaker" id="Lcp-n7-dg6"/>
+                        </items>
+                    </menu>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="202" y="566"/>
         </scene>
     </scenes>
 </document>
