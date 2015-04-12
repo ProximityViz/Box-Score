@@ -54,15 +54,7 @@ class GamesIC: WKInterfaceController
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
             row.gameDateLabel.setText(dateFormatter.stringFromDate(gamesData[index].date))
-            if gamesData[index].awayTeam != "Away" || gamesData[index].homeTeam != "Home"
-            {
-                row.gameTeamsLabel.setText("\(gamesData[index].awayTeam) @ \(gamesData[index].homeTeam)")
-            }
-            else
-            {
-                row.gameTeamsLabel.setHidden(true)
-            }
-            
+            row.gameTeamsLabel.setText("\(gamesData[index].awayTeam) \(gamesData[index].awayRuns.reduce(0, combine: +)) @ \(gamesData[index].homeTeam) \(gamesData[index].homeRuns.reduce(0, combine: +))")
         }
         
     }

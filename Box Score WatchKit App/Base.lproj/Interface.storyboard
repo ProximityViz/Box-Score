@@ -18,10 +18,14 @@
                         <table alignment="left" id="B7y-kx-C1i">
                             <items>
                                 <tableRow identifier="GamesTRC" id="OyP-qR-pVN" customClass="GamesTRC" customModule="Box_Score_WatchKit_Extension">
-                                    <group key="rootItem" width="1" alignment="left" layout="vertical" id="Zvv-rm-Ohn">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="Zvv-rm-Ohn">
                                         <items>
-                                            <label width="1" height="0.5" alignment="left" verticalAlignment="bottom" text="Label" textAlignment="center" id="Nb1-pE-7OL"/>
-                                            <label width="1" height="0.5" alignment="left" text="Label" textAlignment="center" id="GNK-LG-4Bi"/>
+                                            <label width="1" alignment="left" verticalAlignment="bottom" text="Label" textAlignment="center" numberOfLines="2" id="Nb1-pE-7OL">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                            </label>
+                                            <label width="1" alignment="left" text="Label" textAlignment="center" id="GNK-LG-4Bi">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                            </label>
                                         </items>
                                     </group>
                                     <connections>
@@ -48,17 +52,40 @@
                         <label width="136" height="0.20000000000000001" alignment="left" text="T1: Away Team" textAlignment="center" id="NpB-ej-OOT"/>
                         <group width="1" height="0.40000000000000002" alignment="left" id="qSy-x0-mVb">
                             <items>
-                                <button width="0.5" height="1" alignment="left" title="Runs: 0" id="DOt-Ly-jdi"/>
-                                <button width="0.5" height="1" alignment="left" title="Hits: 0" id="kSJ-XY-I9U"/>
+                                <button width="0.5" height="1" alignment="left" title="Runs: 0" id="DOt-Ly-jdi">
+                                    <connections>
+                                        <action selector="incrementRuns" destination="61b-sU-0uc" id="TCP-NR-uhP"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="1" alignment="left" title="Hits: 0" id="kSJ-XY-I9U">
+                                    <connections>
+                                        <action selector="incrementHits" destination="61b-sU-0uc" id="YM2-96-Kkj"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                         <group width="1" height="0.40000000000000002" alignment="left" id="CUb-Vi-aEi">
                             <items>
-                                <button width="0.5" height="1" alignment="left" title="Errors: 0" id="wwA-va-lG4"/>
-                                <button width="0.5" height="1" alignment="left" title="Outs: 0" id="I9z-oP-MBO"/>
+                                <button width="0.5" height="1" alignment="left" title="Errors: 0" id="wwA-va-lG4">
+                                    <connections>
+                                        <action selector="incrementErrors" destination="61b-sU-0uc" id="MhY-Kz-5az"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="1" alignment="left" title="Outs: 0" id="I9z-oP-MBO">
+                                    <connections>
+                                        <action selector="incrementOuts" destination="61b-sU-0uc" id="ANi-I2-4oh"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="errorsButton" destination="wwA-va-lG4" id="8T8-gd-liE"/>
+                        <outlet property="hitsButton" destination="kSJ-XY-I9U" id="luR-Nw-csH"/>
+                        <outlet property="inningLabel" destination="NpB-ej-OOT" id="JQe-fo-p9p"/>
+                        <outlet property="outsButton" destination="I9z-oP-MBO" id="nhk-0t-KAd"/>
+                        <outlet property="runsButton" destination="DOt-Ly-jdi" id="PKU-z9-w32"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="419" y="336"/>
