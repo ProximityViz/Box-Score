@@ -165,7 +165,7 @@
                                     <constraint firstAttribute="trailing" secondItem="RJP-jz-Etf" secondAttribute="trailing" constant="16" id="tAC-EO-5C5"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yon-ln-PP0">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yon-ln-PP0">
                                 <rect key="frame" x="0.0" y="108" width="600" height="382"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Away Team Name: 3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIU-Yp-EGe">
@@ -186,27 +186,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTg-j2-q4j">
-                                        <rect key="frame" x="550" y="352" width="34" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="Oct-A5-sO5"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="TFf-VC-lAf"/>
-                                            <constraint firstAttribute="width" constant="34" id="sHy-EV-ij5"/>
-                                            <constraint firstAttribute="height" constant="30" id="uT6-ne-RA7"/>
-                                        </constraints>
-                                        <state key="normal" title="Save">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Oct-A5-sO5"/>
-                                                <exclude reference="TFf-VC-lAf"/>
-                                            </mask>
-                                        </variation>
-                                        <connections>
-                                            <action selector="saveGame:" destination="iVK-sJ-5hk" eventType="touchUpInside" id="9OJ-Hn-76I"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inning: T1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1g-IX-6yN">
                                         <rect key="frame" x="16" y="0.0" width="90" height="21"/>
                                         <constraints>
@@ -367,7 +346,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Uvn-ZR-rVe" secondAttribute="trailing" constant="16" id="1Fi-jd-ofc"/>
                                     <constraint firstItem="ot3-t4-saM" firstAttribute="leading" secondItem="yon-ln-PP0" secondAttribute="leading" constant="8" id="3Vf-hs-rDg"/>
                                     <constraint firstItem="Bxx-mR-lYJ" firstAttribute="top" secondItem="bIU-Yp-EGe" secondAttribute="bottom" constant="8" id="4Oj-Wu-yEM"/>
-                                    <constraint firstAttribute="bottom" secondItem="wTg-j2-q4j" secondAttribute="bottom" id="6z5-zq-sZk"/>
                                     <constraint firstItem="t1g-IX-6yN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yon-ln-PP0" secondAttribute="leading" constant="8" id="9TZ-ZM-sjO"/>
                                     <constraint firstAttribute="trailing" secondItem="76z-c4-5xE" secondAttribute="trailing" constant="16" id="9oi-xd-Ac0"/>
                                     <constraint firstItem="Ua0-OK-n3s" firstAttribute="top" secondItem="V8D-hR-cIy" secondAttribute="bottom" constant="8" id="BfB-MQ-ClG"/>
@@ -390,7 +368,6 @@
                                     <constraint firstAttribute="trailing" secondItem="V8D-hR-cIy" secondAttribute="trailing" constant="16" id="aEx-jl-dgs"/>
                                     <constraint firstItem="Ctg-wt-UCl" firstAttribute="top" secondItem="u4Y-Og-K8Z" secondAttribute="bottom" constant="8" id="brU-us-mqm"/>
                                     <constraint firstItem="ot3-t4-saM" firstAttribute="top" secondItem="Bxx-mR-lYJ" secondAttribute="bottom" constant="8" id="eFz-kW-ftd"/>
-                                    <constraint firstAttribute="trailing" secondItem="wTg-j2-q4j" secondAttribute="trailing" constant="16" id="eV8-kv-ePW"/>
                                     <constraint firstItem="Uvn-ZR-rVe" firstAttribute="leading" secondItem="u4Y-Og-K8Z" secondAttribute="trailing" constant="16" id="iIw-uK-IMb"/>
                                     <constraint firstItem="mwc-XY-oKH" firstAttribute="top" secondItem="Ctg-wt-UCl" secondAttribute="bottom" constant="8" id="jqZ-x9-KgL"/>
                                     <constraint firstItem="mwc-XY-oKH" firstAttribute="leading" secondItem="yon-ln-PP0" secondAttribute="leading" constant="16" id="lqR-Sw-AkA"/>

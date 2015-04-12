@@ -125,6 +125,7 @@ class ScoringVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         runsLabel.text = "Runs: \(Int(runsStepper.value))"
         awayRunsLabel.text = thisGame.awayRuns.reduce(0, combine: +).description
         homeRunsLabel.text = thisGame.homeRuns.reduce(0, combine: +).description
+        Games.mainData().saveGame(thisGame, atIndex: gameIndex)
     }
     
     @IBAction func stepHits(sender: UIStepper)
@@ -140,6 +141,7 @@ class ScoringVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             homeHitsLabel.text = Int(sender.value).description
         }
         hitsLabel.text = "Hits: \(Int(hitsStepper.value))"
+        Games.mainData().saveGame(thisGame, atIndex: gameIndex)
     }
     
     // NOTE: ERRORS WORK OPPOSITE OF OTHER STATS BECAUSE THEY GO TO THE OTHER TEAM
@@ -156,6 +158,7 @@ class ScoringVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             awayErrorsLabel.text = Int(sender.value).description
         }
         errorsLabel.text = "Errors: \(Int(errorsStepper.value))"
+        Games.mainData().saveGame(thisGame, atIndex: gameIndex)
     }
     
     @IBAction func stepOuts(sender: UIStepper)
@@ -185,7 +188,7 @@ class ScoringVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             // refresh collection views
         }
         outsLabel.text = "Outs: \(Int(thisGame.outs))"
-        
+        Games.mainData().saveGame(thisGame, atIndex: gameIndex)
     }
     
     func displayAwayInning()
@@ -250,7 +253,7 @@ class ScoringVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         thisGame.homeTeam = homeTeamTextField.text == "" ? "Home" : homeTeamTextField.text
         
         title = "\(thisGame.awayTeam) @ \(thisGame.homeTeam)"
-        // TODO: possibly save here?
+        Games.mainData().saveGame(thisGame, atIndex: gameIndex)
     }
     
     // MARK: Collection Views
@@ -302,12 +305,6 @@ class ScoringVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 0
-    }
-    
-    // temporary
-    @IBAction func saveGame(sender: AnyObject)
-    {
-        Games.mainData().saveGame(thisGame, atIndex: gameIndex)
     }
     
 }
