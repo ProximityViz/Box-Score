@@ -37,7 +37,6 @@ class GamesIC: WKInterfaceController
         println(gamesData.count)
         
         loadTableData()
-        
     }
     
     func loadTableData()
@@ -69,7 +68,6 @@ class GamesIC: WKInterfaceController
     
     @IBAction func createNewGame()
     {
-        
         Games.mainData().addGame(Game())
         gameIndex = 0
         pushControllerWithName("ScoringIC", context: nil)
@@ -77,8 +75,9 @@ class GamesIC: WKInterfaceController
 
     override func willActivate()
     {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        gamesData = Games.mainData().getGamesList()
+        loadTableData()
     }
 
     override func didDeactivate()

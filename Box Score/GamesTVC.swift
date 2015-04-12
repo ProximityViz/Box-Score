@@ -61,32 +61,30 @@ class GamesTVC: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         index = indexPath.row
-//        performSegueWithIdentifier("showDetail", sender: self)
-//        let vc = ScoringVC()
         let vc = storyboard?.instantiateViewControllerWithIdentifier("ScoringVC") as! ScoringVC
         vc.gameIndex = indexPath.row
         navigationController?.pushViewController(vc, animated: true)
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?
+    {
+        var deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete")
+            { (action, indexPath) -> Void in
+            
+            tableView.editing = false
+            
+            Games.mainData().deleteGame(indexPath.row)
+            self.gamesData = Games.mainData().getGamesList()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
+        
+        return [deleteAction]
     }
-    */
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        
+    }
 
     /*
     // Override to support rearranging the table view.

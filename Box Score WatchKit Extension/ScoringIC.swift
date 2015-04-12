@@ -28,17 +28,11 @@ class ScoringIC: WKInterfaceController
         thisGame = Games.mainData().getGamesList()[gameIndex]
         if thisGame.currentSide == "away"
         {
-            inningLabel.setText("T\(thisGame.currentInning): \(thisGame.awayTeam)")
-            runsButton.setTitle("Runs: \n\(thisGame.awayRuns.reduce(0, combine: +).description)")
-            hitsButton.setTitle("Hits: \n\(thisGame.awayHits.description)")
-            errorsButton.setTitle("Errors: \n\(thisGame.homeErrors.description)")
+            displayAwayInning()
         }
         else
         {
-            inningLabel.setText("B\(thisGame.currentInning): \(thisGame.homeTeam)")
-            runsButton.setTitle("Runs: \n\(thisGame.homeRuns.reduce(0, combine: +).description)")
-            hitsButton.setTitle("Hits: \n\(thisGame.homeHits.description)")
-            errorsButton.setTitle("Errors: \n\(thisGame.awayErrors.description)")
+            displayHomeInning()
         }
         outsButton.setTitle("Outs: \n\(thisGame.outs.description)")
         
@@ -112,9 +106,7 @@ class ScoringIC: WKInterfaceController
             }
             else
             {
-                homeCollectionView.reloadData()
                 thisGame.currentInning = thisGame.currentInning + 1
-                inningLabel.text = "Inning: \(thisGame.currentInning)"
                 // add space for the next inning
                 if thisGame.awayRuns.count < thisGame.currentInning { thisGame.awayRuns.append(0) }
                 displayAwayInning()
@@ -124,6 +116,22 @@ class ScoringIC: WKInterfaceController
         }
         outsButton.setTitle("Outs: \n\(thisGame.outs.description)")
         Games.mainData().saveGame(thisGame, atIndex: gameIndex)
+    }
+    
+    func displayAwayInning()
+    {
+        inningLabel.setText("T\(thisGame.currentInning): \(thisGame.awayTeam)")
+        runsButton.setTitle("Runs: \n\(thisGame.awayRuns.reduce(0, combine: +).description)")
+        hitsButton.setTitle("Hits: \n\(thisGame.awayHits.description)")
+        errorsButton.setTitle("Errors: \n\(thisGame.homeErrors.description)")
+    }
+    
+    func displayHomeInning()
+    {
+        inningLabel.setText("B\(thisGame.currentInning): \(thisGame.homeTeam)")
+        runsButton.setTitle("Runs: \n\(thisGame.homeRuns.reduce(0, combine: +).description)")
+        hitsButton.setTitle("Hits: \n\(thisGame.homeHits.description)")
+        errorsButton.setTitle("Errors: \n\(thisGame.awayErrors.description)")
     }
 
 }
